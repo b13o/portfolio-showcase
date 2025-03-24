@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tables } from "@/types/database.types";
-import useReactionButtonLogic from "../_hooks/useReactionButtonLogic";
+// import useReactionButtonLogic from "../_hooks/useReactionButtonLogic";
 import { cn } from "@/lib/utils";
 
 const REACTION_ICONS = {
@@ -22,12 +22,12 @@ interface ReactionButtonProps {
 }
 
 const ReactionButton = (props: ReactionButtonProps) => {
-  const { isPending, optimisticState, handleClick } = useReactionButtonLogic(
-    props.reactionCount,
-    props.hasReacted,
-    props.contentId,
-    props.reactionType
-  );
+  // const { isPending, optimisticState, handleClick } = useReactionButtonLogic(
+  //   props.reactionCount,
+  //   props.hasReacted,
+  //   props.contentId,
+  //   props.reactionType
+  // );
   return (
     <Button
       variant={"ghost"}
@@ -35,18 +35,18 @@ const ReactionButton = (props: ReactionButtonProps) => {
       className="px-2.5 py-0.5 h-6.5"
       asChild
       // 追加
-      onClick={handleClick}
-      disabled={isPending}
+      // onClick={handleClick}
+      // disabled={isPending}
     >
       <Badge
         variant={"outline"}
         // 自分がリアクションしているかどうかで、スタイルを分岐
         className={cn(
-          "rounded-full text-sm text-muted-foreground hover:bg-emerald-100/80",
-          optimisticState.hasReacted && "bg-emerald-50 border-emerald-500"
+          "rounded-full text-sm text-muted-foreground hover:bg-emerald-100/80"
+          // optimisticState.hasReacted && "bg-emerald-50 border-emerald-500"
         )}
       >
-        {REACTION_ICONS[props.reactionType]} {optimisticState.reactionCount}
+        {REACTION_ICONS[props.reactionType]} {props.reactionCount}
       </Badge>
     </Button>
   );

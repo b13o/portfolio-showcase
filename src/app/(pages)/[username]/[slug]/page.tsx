@@ -1,10 +1,10 @@
-// import { PROJECTS } from "../../../../../_data/contents";
-// import { extractOwnerAndRepo } from "@/utils/api";
+import { PROJECTS } from "../../../../../_data/contents";
+import { extractOwnerAndRepo } from "@/utils/api";
 import MarkdownViewer from "./_components/markdown-viewer";
 import MetaDataCard from "./_components/metadata-card";
 
 // Cloudflare Pages は、現状 edge ランタイムのみをサポート
-export const runtime = "edge";
+// export const runtime = "edge";
 
 export default async function Detail({
   params,
@@ -27,9 +27,9 @@ export default async function Detail({
   );
 }
 
-// export async function generateStaticParams() {
-//   return PROJECTS.map(({ repoUrl }) => {
-//     const { owner, repo } = extractOwnerAndRepo(repoUrl);
-//     return { username: owner, slug: repo };
-//   });
-// }
+export async function generateStaticParams() {
+  return PROJECTS.map(({ repoUrl }) => {
+    const { owner, repo } = extractOwnerAndRepo(repoUrl);
+    return { username: owner, slug: repo };
+  });
+}
